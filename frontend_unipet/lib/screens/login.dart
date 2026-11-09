@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:frontend_unipet/screens/cadastro.dart';
+import 'package:frontend_unipet/screens/home.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -205,7 +207,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: 54,
                       child: ElevatedButton(
-                        onPressed: _login,
+                        onPressed: () => {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Home(),
+                            ),
+                          ),
+                        },
                         child: const Text(
                           'Entrar',
                           style: TextStyle(fontSize: 16),
@@ -233,7 +242,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           onPressed: () {
-                            // Criar rota de cadastro.
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Cadastro(),
+                              ),
+                            );
                           },
                           child: const Text('Cadastre-se'),
                         ),

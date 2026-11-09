@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -25,7 +24,7 @@ class BottomNavBar extends StatelessWidget {
 
       // CORES DOS ÍCONES
       selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white70,
 
       // TAMANHO DOS ÍCONES
       iconSize: 26,
@@ -42,15 +41,7 @@ class BottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Início',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.error_outline),
-          label: 'Ocorrência',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.insert_chart_outlined),
-          label: 'Dados',
-        ),
+        ), 
         BottomNavigationBarItem(
           icon: Icon(Icons.pets),
           label: 'Animais',

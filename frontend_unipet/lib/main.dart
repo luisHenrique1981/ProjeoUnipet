@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'screens/ocorrencias_formulario.dart';
+import 'package:frontend_unipet/screens/login.dart';
 import 'theme/app_theme.dart';
 
 void main() {
@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Meu Aplicativo',
+      title: 'Unipet',
       theme: AppTheme.lightTheme,
-      home: const FormulariOcorrencia(),
+      home: const LoginScreen(),
     );
   }
 }

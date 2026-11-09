@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:frontend_unipet/screens/adocao_formulario.dart';
+import 'package:frontend_unipet/screens/ocorrencias_formulario.dart';
+import 'package:frontend_unipet/screens/perfil_usuario.dart';
 import '../widgets/banner_dog_pesquisa.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/bottom_nav_bar.dart';
@@ -19,7 +22,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: const Color(0xFFF2F5FA),
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 80,
         title: Row(
           children: [
             Image.asset(
@@ -50,6 +53,7 @@ class _HomeState extends State<Home> {
             ),
           ),
         ],
+        automaticallyImplyLeading: false,
       ),
 
       body: SingleChildScrollView(
@@ -80,10 +84,17 @@ class _HomeState extends State<Home> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      minimumSize: const Size(200, 200), // Define a largura mínima do botão
+                      minimumSize: const Size(170, 170), // Define a largura mínima do botão
                     ),
                     onPressed: () {
-                      const Text('Ocorrência requerida');
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return FormulariOcorrencia();
+                          }
+                        ),
+                      );
                     },
                     child: const Column(
                       mainAxisSize: MainAxisSize.min,
@@ -112,10 +123,15 @@ class _HomeState extends State<Home> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      minimumSize: const Size(200, 200), // Define a largura mínima do botão
+                      minimumSize: const Size(170, 170), // Define a largura mínima do botão
                     ),
                     onPressed: () {
-                      const Text('Adoção Requerida');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FormularioAdocao(),
+                        ),
+                      );
                     },
                     child: const Column(
                       mainAxisSize: MainAxisSize.min,
@@ -149,7 +165,7 @@ class _HomeState extends State<Home> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      minimumSize: const Size(200, 200), // Define a largura mínima do botão
+                      minimumSize: const Size(170, 170), // Define a largura mínima do botão
                     ),
                     onPressed: () {
                       const Text('Ocorrência requerida');
@@ -181,7 +197,7 @@ class _HomeState extends State<Home> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      minimumSize: const Size(200, 200), // Define a largura mínima do botão
+                      minimumSize: const Size(170, 170), // Define a largura mínima do botão
                     ),
                     onPressed: () {
                       const Text('Ocorrência requerida');
@@ -214,7 +230,7 @@ class _HomeState extends State<Home> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Conheça os animais do campus ',
+                      const Text('Conheça os \nanimais do campus ',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -244,6 +260,7 @@ class _HomeState extends State<Home> {
               ),
               Container(
                 width: double.infinity,
+                height: 300,
                 decoration: BoxDecoration(
                   color: const Color(0xFFFF9100), // Cor em hex ou Colors.grey[100]
                   borderRadius: BorderRadius.circular(16.0),
@@ -252,35 +269,53 @@ class _HomeState extends State<Home> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            const Text('Faça parte\ndessa rede\nde cuidado',
-                              style: TextStyle(
-                                fontSize: 34,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
+                    SizedBox(
+                      height: 210,
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Image.asset(
+                              'assets/img/voluntarios2.png',
+                              width: 200,
+                              height: 200,
+                              fit: BoxFit.contain,
                             ),
-                            const Text('Seu tempo, carinho e\n atenção transformam\n vidas no campus',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.white,
-                              ),
+                          ),
+
+                          Positioned(
+                            left: 0,
+                            top: 10,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Faça parte\ndessa rede\nde cuidado',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+
+                                const SizedBox(height: 8),
+
+                                const Text(
+                                  'Seu tempo, carinho e\natenção transformam\nvidas no campus',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Image.asset(
-                          'assets/img/voluntarios2.png',
-                          width: 240,
-                          height: 240,
-                          fit: BoxFit.contain,
-                        )
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
+                    const SizedBox(height: 8),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -288,7 +323,7 @@ class _HomeState extends State<Home> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        minimumSize: const Size(double.infinity, 50), // Define a largura mínima do botão
+                        minimumSize: const Size(double.infinity, 38), // Define a largura mínima do botão
                       ),
                       onPressed: () {
                         const Text('Interesse em voluntariado');
@@ -300,7 +335,7 @@ class _HomeState extends State<Home> {
                             'Quero ser voluntário!',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 18,
                               color: Colors.black,
                             ),
                           ),
@@ -339,41 +374,67 @@ class _HomeState extends State<Home> {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white, // Cor em hex ou Colors.grey[100]
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(16.0),
                   boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.1), // Cor da sombra com transparência
-                    spreadRadius: 2, // Quanto a sombra se espalha
-                    blurRadius: 10,   // O nível de desfoque/suavidade da sombra
-                    offset: const Offset(0, 4), // Posição da sombra: (x: horizontal, y: vertical)
-                  ),
-                ],
-                ), // Sua cor aqui
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.1),
+                      spreadRadius: 2,
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
                 padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
+                child: SizedBox(
+                  height: 250,
+                  child: Stack(
+                    children: [
+                      // Imagem à direita
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset(
+                          'assets/img/vacinacao.png',
+                          width: 220,
+                          height: 220,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+
+                      // Textos sobrepostos
+                      Positioned(
+                        left: 0,
+                        top: 10,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text('Campanha de\nvacinação',
+                            const Text(
+                              'Campanha de\nvacinação',
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
                             ),
-                            const Text('28/06 a 02/07',
+
+                            const SizedBox(height: 8),
+
+                            const Text(
+                              '28/06 a 02/07',
+                              textAlign: TextAlign.left,
                               style: TextStyle(
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue,
-                                ),
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                              ),
                             ),
-                            const Text('Mantenha as vacinas em\n dia e cuide de quem te\n oferece tanto amor!',
+
+                            const SizedBox(height: 8),
+
+                            const Text(
+                              'Mantenha as vacinas em\ndia e cuide de quem te\noferece tanto amor!',
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal,
@@ -382,55 +443,75 @@ class _HomeState extends State<Home> {
                             ),
                           ],
                         ),
-                        Image.asset(
-                          'assets/img/vacinacao.png',
-                          width: 220,
-                          height: 220,
-                          fit: BoxFit.contain,
-                        )
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white, // Cor em hex ou Colors.grey[100]
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(16.0),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha:0.2),
+                      color: Colors.black.withValues(alpha: 0.2),
                       offset: const Offset(0, 4),
                       blurRadius: 8,
                     ),
                   ],
                 ),
                 padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
+                child: SizedBox(
+                  height: 250,
+                  child: Stack(
+                    children: [
+                      // Imagem à direita
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset(
+                          'assets/img/racao.png',
+                          width: 220,
+                          height: 220,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+
+                      // Textos sobrepostos à imagem
+                      Positioned(
+                        left: 0,
+                        top: 10,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text('Arrecadação\nde ração',
+                            const Text(
+                              'Arrecadação\nde ração',
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
                             ),
-                            const Text('09/08 a 31/08',
+
+                            const SizedBox(height: 8),
+
+                            const Text(
+                              '09/08 a 31/08',
+                              textAlign: TextAlign.left,
                               style: TextStyle(
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.green,
-                                ),
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue,
+                              ),
                             ),
-                            const Text('Doe ração para cães e\ngatos. Durante 5 dias, das\n 8h às 18h, no campus.',
+
+                            const SizedBox(height: 8),
+
+                            const Text(
+                              'Doe ração para cães e\ngatos. Durante 5 dias, das\n8h às 18h, no campus.',
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal,
@@ -439,15 +520,9 @@ class _HomeState extends State<Home> {
                             ),
                           ],
                         ),
-                        Image.asset(
-                          'assets/img/racao.png',
-                          width: 220,
-                          height: 220,
-                          fit: BoxFit.contain,
-                        )
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -688,11 +763,16 @@ class _HomeState extends State<Home> {
         ),
       ),
       bottomNavigationBar: BottomNavBar(
-        selectedIndex: selectedIndex,
+        selectedIndex: 0,
         onTap: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
+          if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const PerfilUsuario(),
+              ),
+            );
+          }
         },
       ),
     );
