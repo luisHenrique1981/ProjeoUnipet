@@ -149,7 +149,7 @@ def editar_usuario(id):
 
 # DELETE - Excluir usuario
 @app.route('/api/usuario/<int:id>', methods=['DELETE'])
-def excluir_usuario(id):
+def excluir_usuario (id):
     conn = get_db_connection()
     cursor = conn.cursor()
 
